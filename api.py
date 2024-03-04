@@ -43,7 +43,7 @@ def create():
     try:
         data = request.get_data().decode('utf-8')
         event = _from_raw(data)
-        _id = logic.EventLogic.create(event) #ОШИБКА
+        _id = _event_logic.create(event)
         return {'create status': 'success', 'result': f'{event.id}|{event.date}|{event.title}|{event.text}'}, 201
     except Exception as ex:
         return f'failed to CREATE with {ex}', 404
@@ -52,10 +52,10 @@ def create():
 def list():
     try:
         events = _event_logic.list()
-        raw_events = ''
+        raw_events = ""
         for event in events:
             raw_events += _to_raw(event) + '\n'
-        return {'list status': 'success', 'result': f'{raw_events}'}, 200
+        return raw_events, 200
     except Exception as ex:
         return f"failed to LIST with: {ex}", 404
 

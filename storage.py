@@ -29,6 +29,6 @@ class LocalStorage:
         self._storage[event.id] = event
 
     def delete(self, _id: str):
-        if _id not in self.storage:
+        if _id not in self._storage:
             raise StorageException(f"{_id} not found in storage")
         del self._storage[_id]
