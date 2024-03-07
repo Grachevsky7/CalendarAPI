@@ -55,7 +55,7 @@ def list():
         raw_events = ""
         for event in events:
             raw_events += _to_raw(event) + '\n'
-        return {'list status': 'success', 'result': raw_events}, 200
+        return raw_events, 200
     except Exception as ex:
         return f"failed to LIST with: {ex}", 404
 
