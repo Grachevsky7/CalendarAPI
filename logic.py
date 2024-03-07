@@ -28,9 +28,9 @@ class EventLogic:
             raise LogicException(f"title length > MAX: {TITLE_LIMIT}")
         if event.text is None or len(event.text) > TEXT_LIMIT:
             raise LogicException(f"text length > MAX: {TEXT_LIMIT}")
-        if date_control not in date_list: date_list.append(date_control)
-        else:
-            raise LogicException(f"Limit input: one in {event.date}")
+        #if date_control not in date_list: date_list.append(date_control)
+        #else:
+        #   raise LogicException(f"Limit input: one in {event.date}")
 
     def create(self, event: model.Event) -> str:
         self._validate_event(event)
